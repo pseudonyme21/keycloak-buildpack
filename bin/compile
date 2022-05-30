@@ -71,10 +71,10 @@ info "Build Dir = ${BUILD_DIR}"
 info "Cache Dir = ${CACHE_DIR}"
 info "Env Dir = ${ENV_DIR}"
 if [[ -d "${BUILD_DIR}/dev/providers" ]]; then
-  location="${BUILD_DIR}/dev/providers/*.jar"
-  start "Installing jars from ${location}"
-  ls "${BUILD_DIR}/dev/providers"
-  cp "${location}" "${KEYCLOAK_PATH}/providers/"
+  location="${BUILD_DIR}/dev/providers"
+  jar_file = $(find "${location}/*.jar" | head -n 1)
+  start "Installing jars ${location}/${jar_file}"
+  cp "${location}/${jar_file}" "${KEYCLOAK_PATH}/providers/"
   finished
 fi
 
