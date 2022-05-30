@@ -66,6 +66,17 @@ if [[ -f "${ENV_DIR}/KEYCLOAK_PROVIDERS" ]]; then
   IFS=' ' 
 fi
 
+step "Adding providers from local path"
+info "Build Dir = ${BUILD_DIR}"
+info "Cache Dir = ${CACHE_DIR}"
+info "Env Dir = ${ENV_DIR}"
+if [[ -f "${ENV_DIR}/KEYCLOAK_PROVIDER_LOCAL_VERSION" ]]; then
+  KEYCLOAK_PROVIDER_LOCAL_VERSION=$(cat "${ENV_DIR}/KEYCLOAK_PROVIDER_LOCAL_VERSION")
+  info "${KEYCLOAK_PROVIDER_LOCAL_VERSION}"
+  local location="${BUILD_DIR}/dev/providers/tchap-identite-0.0.1.jar"
+  mv "${location}" "${KEYCLOAK_PATH}/providers/tchap-identite-0.0.1.jar"
+fi
+
 step "Adding templates"
 if [[ -f "${ENV_DIR}/KEYCLOAK_TEMPLATES_DIR" ]]; then
   KEYCLOAK_TEMPLATES_DIR=$(cat "${ENV_DIR}/KEYCLOAK_TEMPLATES_DIR")
