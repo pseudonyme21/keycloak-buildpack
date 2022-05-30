@@ -71,7 +71,7 @@ info "Build Dir = ${BUILD_DIR}"
 info "Cache Dir = ${CACHE_DIR}"
 info "Env Dir = ${ENV_DIR}"
 if [[ -d "${BUILD_DIR}/dev/providers" ]]; then
-  local location="${BUILD_DIR}/dev/providers/*.jar"
+  location="${BUILD_DIR}/dev/providers/*.jar"
   start "Installing jars from ${location}"
   ls "${BUILD_DIR}/dev/providers"
   cp "${location}" "${KEYCLOAK_PATH}/providers/"
