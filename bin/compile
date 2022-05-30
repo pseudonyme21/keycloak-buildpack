@@ -70,11 +70,12 @@ step "Adding providers from local path"
 info "Build Dir = ${BUILD_DIR}"
 info "Cache Dir = ${CACHE_DIR}"
 info "Env Dir = ${ENV_DIR}"
-if [[ -f "${ENV_DIR}/KEYCLOAK_PROVIDER_LOCAL_VERSION" ]]; then
-  KEYCLOAK_PROVIDER_LOCAL_VERSION=$(cat "${ENV_DIR}/KEYCLOAK_PROVIDER_LOCAL_VERSION")
-  info "${KEYCLOAK_PROVIDER_LOCAL_VERSION}"
-  local location="${BUILD_DIR}/dev/providers/tchap-identite-0.0.1.jar"
-  mv "${location}" "${KEYCLOAK_PATH}/providers/tchap-identite-0.0.1.jar"
+if [[ -f "${BUILD_DIR}/dev/providers" ]]; then
+  local location="${BUILD_DIR}/dev/providers/*.jar"
+  start "Installing jars from ${location}"
+  ls "${BUILD_DIR}/dev/providers"
+  cp "${location}" "${KEYCLOAK_PATH}/providers/"
+  finished
 fi
 
 step "Adding templates"
