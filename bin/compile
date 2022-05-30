@@ -70,7 +70,7 @@ step "Adding providers from local path"
 info "Build Dir = ${BUILD_DIR}"
 info "Cache Dir = ${CACHE_DIR}"
 info "Env Dir = ${ENV_DIR}"
-if [[ -f "${BUILD_DIR}/dev/providers" ]]; then
+if [[ -d "${BUILD_DIR}/dev/providers" ]]; then
   local location="${BUILD_DIR}/dev/providers/*.jar"
   start "Installing jars from ${location}"
   ls "${BUILD_DIR}/dev/providers"
