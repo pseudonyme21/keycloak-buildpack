@@ -74,7 +74,7 @@ if [[ -d "${BUILD_DIR}/dev/providers" ]]; then
   location="${BUILD_DIR}/dev/providers"
   jar_file=$(find "${location}"/*.jar | head -n 1)
   start "Installing jars ${location}/${jar_file}"
-  cp "${location}/${jar_file}" "${KEYCLOAK_PATH}/providers/"
+  cp "${jar_file}" "${KEYCLOAK_PATH}/providers/"
   finished
 fi
 
